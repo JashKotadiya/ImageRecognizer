@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 import os
 import time
 import cv2
-import pygame
-import sys
+
 
 load_dotenv()
 apiKey = os.getenv("GOOGLE_API_KEY")
