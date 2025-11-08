@@ -42,7 +42,7 @@ while True:
 
         # Send to Gemini for interpretation
         response = model.generate_content([
-            "Describe the object or living thing you see in this image in less than 10 words, be detailed but concise.",
+            "Describe the hand gesture you see in this image in less than 10 words, be detailed but concise.",
             img
         ])
 
