@@ -5,11 +5,9 @@ import os
 
 load_dotenv()
 apiKey = os.getenv("GOOGLE_API_KEY")
-
-# Configure with your API key
 genai.configure(api_key=apiKey)
 
-# Load the multimodal model
+# Load the model
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 # Open an image (any supported format)
