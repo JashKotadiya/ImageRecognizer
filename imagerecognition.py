@@ -47,6 +47,7 @@ while True:
             "Describe the object or living thing you see in this image in less than 10 words, be detailed but concise.",
             img
         ])
+        # Can ask gemini for a simple true or false answer, convert it to boolean, if true sound an alarm
         response2 = model.generate_content([
             "Does anything that you see fit this description at all?:" + targetObject,
             img
