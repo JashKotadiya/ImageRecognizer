@@ -1,5 +1,7 @@
 import google.generativeai as genai
 from PIL import Image
+from dotenv import load_dotenv
+import os
 import time
 import cv2
 import pygame
@@ -47,11 +49,11 @@ while True:
 
         print("\nGemini says:")
         print(response.text)
-        print("\nPress SPACE to capture again, or ESC to quit.\n")
+        print("\nPress SPACE to capture again, or Q to quit.\n")
 
         time.sleep(1)  # avoid spam-clicking
-    # ESC key -> exit
-    elif key == ord("q"):  # ESC
+    # Q key -> exit
+    elif key == ord("q"):  # Q
         break
 
 cap.release()
