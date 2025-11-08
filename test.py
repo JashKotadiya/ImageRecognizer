@@ -12,7 +12,7 @@ cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     raise Exception("Could not open webcam")
 
-print("Press SPACE to capture an image, or ESC to quit.")
+print("Press SPACE to capture an image, or q to quit.")
 
 while True:
     # Read a frame from the camera
@@ -37,13 +37,13 @@ while True:
 
         # Send to Gemini for interpretation
         response = model.generate_content([
-            "Describe what you see in this image.",
+            "Describe the object or living thing you see in this image in one word.",
             img
         ])
 
         print("\nGemini says:")
         print(response.text)
-        print("\nPress SPACE to capture again, or ESC to quit.\n")
+        print("\nPress SPACE to capture again, or q to quit.\n")
 
         time.sleep(1)  # avoid spam-clicking
     # ESC key -> exit
