@@ -3,12 +3,12 @@ import cv2
 #thres = 0.45 # Threshold to detect object
 
 classNames = []
-classFile = "/home/pi/Desktop/Object_Detection_Files/coco.names"
+classFile = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = "/home/pi/Desktop/Object_Detection_Files/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-weightsPath = "/home/pi/Desktop/Object_Detection_Files/frozen_inference_graph.pb"
+configPath = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+weightsPath = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/frozen_inference_graph.pb"
 
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 net.setInputSize(320,320)
@@ -25,6 +25,8 @@ def getObjects(img, thres, nms, draw=True, objects=[]):
     if len(classIds) != 0:
         for classId, confidence,box in zip(classIds.flatten(),confs.flatten(),bbox):
             className = classNames[classId - 1]
+            if className == "person": 
+                continue
             if className in objects:
                 objectInfo.append([box,className])
                 if (draw):
@@ -47,7 +49,7 @@ if __name__ == "__main__":
 
     while True:
         success, img = cap.read()
-        result, objectInfo = getObjects(img,0.45,0.2)
+        result, objectInfo = getObjects(img,0.50,0.2)
         #print(objectInfo)
         cv2.imshow("Output",img)
         cv2.waitKey(1)
