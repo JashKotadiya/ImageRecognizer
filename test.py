@@ -5,7 +5,7 @@ from PIL import Image
 genai.configure(api_key="AIzaSyCJmPxUv36qoucvBFQ7-TWDW8kGjRkc_Go")
 
 # Load the multimodal model
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 # Open an image (any supported format)
 img = Image.open("C:/Users/Jash_/Downloads/download.jpeg")
