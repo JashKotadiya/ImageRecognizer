@@ -5,22 +5,20 @@ from dotenv import load_dotenv
 import os
 import tempfile
 
-# --- Load environment variables ---
+# Load Gemini model
 load_dotenv()
 apiKey = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=apiKey)
-
-# --- Load Gemini model ---
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 st.set_page_config(page_title="Gemini Object Finder", layout="centered")
 st.title("Gemini Object Recognition App")
 st.write("Use your webcam to detect and identify objects using Gemini AI.")
 
-# --- Input target description ---
+# Get user input for target object description
 targetObject = st.text_input("Describe the object you're looking for")
 
-# --- Webcam capture section ---
+# Get a frame from the camera
 camera = st.camera_input("Capture Image")
 
 if camera is not None and targetObject:
@@ -29,7 +27,7 @@ if camera is not None and targetObject:
         tmp.write(camera.getvalue())
         img = Image.open(tmp.name)
 
-    # --- Ask Gemini to describe and compare ---
+    # Get Gemini's response
     with st.spinner("Sending image to Gemini..."):
         description_response = model.generate_content([
             "Describe the main object(s) or living thing(s) you see in less than 10 words.",
