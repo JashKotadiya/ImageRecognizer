@@ -47,9 +47,11 @@ while True:
 
         time.sleep(1)  # avoid spam-clicking
     # ESC key -> exit
-    elif key == pygame.K_x:  # ESC
-        sys.quit()
+    elif key == ord("q"):  # ESC
+        break
 
+cap.release()
+cv2.destroyAllWindows()
 # Use gemini 
 # Otherwise use the Max thing, but you have to train your own model -> When the cloud is not access
 # Focus on the storing telling 
