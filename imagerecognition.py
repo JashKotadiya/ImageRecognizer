@@ -17,11 +17,13 @@ genai.configure(api_key=apiKey)
 # Load the model
 model = genai.GenerativeModel("gemini-2.5-flash")
 
+targetObject = str(input("Describe the object you are looking for: "))
+
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     raise Exception("Could not open webcam")
 
-print("Press SPACE to capture an image, or q to quit.")
+print("Press SPACE to capture an image, or q to quit. \nNote: webcam window must be in focus for a keypress to register")
 
 while True:
     # Read a frame from the camera
@@ -49,14 +51,18 @@ while True:
             "Describe the object or living thing you see in this image in less than 10 words, be detailed but concise.",
             img
         ])
+        response2 = model.generate_content([
+            "Does anything that you see fit this description at all?:" + targetObject,
+            img
+        ])
 
         print("\nGemini says:")
-        print(response.text)
+        print(response.text + "\n" + response2.text)
         print("\nPress SPACE to capture again, or Q to quit.\n")
 
         time.sleep(1)  # avoid spam-clicking
     # Q key -> exit
-    elif key == ord("q"):  # Q
+    elif key in [ord("q"), ord("Q")]:  # Q
         break
 
 cap.release()
