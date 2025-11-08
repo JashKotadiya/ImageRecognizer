@@ -1,5 +1,3 @@
-print("Hello World")
-
 #Have Infrared sensor, along with a camera. We use computer vision (open cv)
 #   Use the infrared sensor to check whether we are within 2 feet of a distance
 #   stop the motor
