@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import os
 import tempfile
 
+# THIS FILE MUST BE RUN USING THE TERMINAL WITH THE COMMAND: streamlit run ImageRecognizer/frontendApp.py
+
 # Load Gemini model
 load_dotenv()
 apiKey = os.getenv("GEMINI_API_KEY")
