@@ -1,11 +1,16 @@
-from google import genai
+import google.generativeai as genai
+from PIL import Image
 
-#print("Hello world")
+# Configure with your API key
+genai.configure(api_key="AIzaSyCJmPxUv36qoucvBFQ7-TWDW8kGjRkc_Go")
 
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-client = genai.Client(api_key="AIzaSyCJmPxUv36qoucvBFQ7-TWDW8kGjRkc_Go")
+# Load the multimodal model
+model = genai.GenerativeModel("gemini-1.5-flash")
 
-response = client.models.generate_content(
-    model="gemini-2.5-flash", contents="Explain how AI works in a few words"
-)
+# Open an image (any supported format)
+img = Image.open("C:/Users/Jash_/Downloads/download.jpeg")
+
+# Ask the model about it
+response = model.generate_content(["What is in this image?", img])
+
 print(response.text)
