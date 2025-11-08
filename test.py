@@ -13,11 +13,7 @@ genai.configure(api_key=apiKey)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 # Open an image (any supported format)
-<<<<<<< HEAD
-img = Image.open(r"C:\Users\kirkw\My Files\Personal\jawStarePfp.jpg")
-=======
-img = Image.open("C:/Users/ash7m/OneDrive/HackUmass/ImageRecognizer/cat.jpg")
->>>>>>> 5d294aca673992c4d3e8d38a28390103233746a6
+img = Image.open(r"C:\Users\kirkw\My Files\School\VSCode Programs\HackUMass\ImageRecognizer\cat.jpg")
 
 # Ask the model about it
 response = model.generate_content(["What is in this image? Only give one word", img])
