@@ -1,11 +1,17 @@
 import google.generativeai as genai
 from PIL import Image
+from dotenv import load_dotenv
+import os
 import time
 import cv2
 import pygame
 import sys
 
-genai.configure(api_key="AIzaSyCJmPxUv36qoucvBFQ7-TWDW8kGjRkc_Go")
+load_dotenv()
+apiKey = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=apiKey)
+
+# Load the model
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 cap = cv2.VideoCapture(0)
@@ -43,11 +49,11 @@ while True:
 
         print("\nGemini says:")
         print(response.text)
-        print("\nPress SPACE to capture again, or q to quit.\n")
+        print("\nPress SPACE to capture again, or Q to quit.\n")
 
         time.sleep(1)  # avoid spam-clicking
-    # ESC key -> exit
-    elif key == ord("q"):  # ESC
+    # Q key -> exit
+    elif key == ord("q"):  # Q
         break
 
 cap.release()
