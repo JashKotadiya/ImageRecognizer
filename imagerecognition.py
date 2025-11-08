@@ -5,9 +5,9 @@ import os
 import time
 import cv2
 
-
 load_dotenv()
 apiKey = os.getenv("GOOGLE_API_KEY")
+
 genai.configure(api_key=apiKey)
 
 # Load the model
@@ -57,8 +57,3 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
-# Use gemini 
-# Otherwise use the Max thing, but you have to train your own model -> When the cloud is not access
-# Focus on the storing telling 
-# Jewel collection because camera is pointing at the floor
-# Tell a story about the problem you are trying to solve 
