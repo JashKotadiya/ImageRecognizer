@@ -11,6 +11,6 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 img = Image.open("C:/Users/ash7m/OneDrive/HackUmass/ImageRecognizer/cat.jpg")
 
 # Ask the model about it
-response = model.generate_content(["What is in this image?", img])
+response = model.generate_content(["What is in this image? Only give one word", img])
 
 print(response.text)
