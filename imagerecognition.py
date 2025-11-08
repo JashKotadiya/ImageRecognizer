@@ -5,6 +5,10 @@ import os
 import time
 import cv2
 
+# User description 
+# OpenCV to detect an object 
+# Ask Gemnini to see how much this matched 70% or 80% accuracy
+
 load_dotenv()
 apiKey = os.getenv("GOOGLE_API_KEY")
 
