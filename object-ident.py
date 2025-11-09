@@ -94,7 +94,7 @@ if __name__ == "__main__":
                     pygame.mixer.init()
 
                     # Load your short sound file (make sure you have it in your folder)
-                    pygame.mixer.music.load("beep.wav")
+                    pygame.mixer.music.load("./beep-125033.wav")
                     pygame.mixer.music.play()
 
                     # Wait a short amount of time (in seconds), adjust as needed
