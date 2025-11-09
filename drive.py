@@ -36,12 +36,13 @@ class DriveMotor:
         self.pwm.ChangeDutyCycle(0)
 
 if __name__ == "__main__":   
+    driveMotor = DriveMotor(17,18,22) # Get these numbers from dev and aaron
     try:
-        DriveMotor.motor_forward(80)  # Run forward at 80% speed
+        driveMotor.motor_forward(80)  # Run forward at 80% speed
         time.sleep(3)
-        DriveMotor.motor_backward(80)  # Run backward at 80% speed
+        driveMotor.motor_backward(80)  # Run backward at 80% speed
         time.sleep(3)
-        DriveMotor.motor_stop()
+        driveMotor.motor_stop()
     finally:
-        DriveMotor.pwm.stop()
+        driveMotor.pwm.stop()
         GPIO.cleanup()
