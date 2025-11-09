@@ -87,7 +87,7 @@ if __name__ == "__main__":
                 
                 gemini_confidence = int(gemini_confidence.text)
                 print("Was good")
-                if gemini_confidence > 75:
+                if gemini_confidence >= 75:
                     print(f"Lost object Found with confidence {gemini_confidence}!!")
                     cap.release()
                     cv2.destroyAllWindows()
