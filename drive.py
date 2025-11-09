@@ -17,7 +17,7 @@ class DriveMotor:
         GPIO.setup(IN2, GPIO.OUT)
         GPIO.setup(ENA, GPIO.OUT)
 
-        self.pwm = GPIO.PWM(ENA, 1000)  # PWM at 1kHz frequency
+        self.pwm = GPIO.PWM(ENA, 100)  # PWM at 1kHz frequency
         self.pwm.start(0)  # Start PWM with 0% duty cycle
 
     def motor_forward(self, speed):
@@ -36,13 +36,22 @@ class DriveMotor:
         self.pwm.ChangeDutyCycle(0)
 
 if __name__ == "__main__":   
-    driveMotor = DriveMotor(17,18,22) # Get these numbers from dev and aaron
+    driveMotor = DriveMotor(16,20,21)
+    driveMotor2 = DriveMotor(24,23,25) #
     try:
-        driveMotor.motor_forward(80)  # Run forward at 80% speed
+        driveMotor.motor_forward(80)
+        driveMotor2.motor_forward(80) 
         time.sleep(3)
-        driveMotor.motor_backward(80)  # Run backward at 80% speed
-        time.sleep(3)
+        driveMotor.motor_backward(80)
+        driveMotor2.motor_backward(80)
+        time.sleep(3)  
         driveMotor.motor_stop()
+        driveMotor2.motor_stop()
+        
     finally:
         driveMotor.pwm.stop()
+        driveMotor2.pwm.stop()
         GPIO.cleanup()
+
+   
+    
