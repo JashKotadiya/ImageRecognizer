@@ -4,6 +4,7 @@ from PIL import Image
 from dotenv import load_dotenv
 import os
 import time
+import pygame
 
 load_dotenv()
 apiKey = os.getenv("GOOGLE_API_KEY")
@@ -90,6 +91,17 @@ if __name__ == "__main__":
                     print(f"Lost object Found with confidence {gemini_confidence}!!")
                     cap.release()
                     cv2.destroyAllWindows()
+                    pygame.mixer.init()
+
+                    # Load your short sound file (make sure you have it in your folder)
+                    pygame.mixer.music.load("./beep-125033.wav")
+                    pygame.mixer.music.play()
+
+                    # Wait a short amount of time (in seconds), adjust as needed
+                    time.sleep(2)
+
+                    # Stop music if still playing
+                    pygame.mixer.music.stop()
                     break
                 else: 
                     print(f"Not enough confidence: {gemini_confidence}")
