@@ -11,6 +11,8 @@ genai.configure(api_key=apiKey)
 
 # Load the model
 model = genai.GenerativeModel("gemini-2.5-flash")
+gemini_confidence = 0
+user_description = input("Describe the object you lost: ")
 
 classNames = []
 classFile = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/coco.names"
@@ -75,15 +77,27 @@ if __name__ == "__main__":
                 ])
 
                 print(f"\nGemini description for:")
-                print(response.text)
+                gemini_response = response.text #Saves the response
+                print(gemini_response)
+                
+                print("Working patt 1")
+                gemini_confidence = model.generate_content([
+                    f"Imagine you are hired to compare two descriptions of objects and determine how close the descriptions match. Here is the first description: {user_description}. Here is the second description {gemini_response}. Return only the confidence level as an integer between one and one hundred"])
+                
+                gemini_confidence = int(gemini_confidence.text)
+                print("Was good")
+                if gemini_confidence > 75:
+                    print(f"Lost object Found with confidence {gemini_confidence}!!")
+                    cap.release
+                    cv2.destroyAllWindows()
+                    break
+                else: 
+                    print(f"Not enough confidence: {gemini_confidence}")
 
-                detected_this_frame.add(obj_name)
+                detected_this_frame.add(obj_name)  
 
         prev_detected = detected_this_frame.copy()
 
         cv2.imshow("Output", result_img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
-    cap.release()
-    cv2.destroyAllWindows()
