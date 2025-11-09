@@ -16,12 +16,12 @@ gemini_confidence = 0
 user_description = input("Describe the object you lost: ")
 
 classNames = []
-classFile = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/coco.names"
+classFile = "/home/rpi4/code/ImageRecognizer/coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-weightsPath = "C:/Users/Jash_/OneDrive/Desktop/HackUmass/ImageRecognizer/frozen_inference_graph.pb"
+configPath = "/home/rpi4/code/ImageRecognizer/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+weightsPath = "/home/rpi4/code/ImageRecognizer/frozen_inference_graph.pb"
 
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 net.setInputSize(320,320)
@@ -91,17 +91,17 @@ if __name__ == "__main__":
                     print(f"Lost object Found with confidence {gemini_confidence}!!")
                     cap.release()
                     cv2.destroyAllWindows()
-                    pygame.mixer.init()
+                    # pygame.mixer.init()
 
-                    # Load your short sound file (make sure you have it in your folder)
-                    pygame.mixer.music.load("./beep-125033.wav")
-                    pygame.mixer.music.play()
+                    # # Load your short sound file (make sure you have it in your folder)
+                    # pygame.mixer.music.load("./beep-125033.wav")
+                    # pygame.mixer.music.play()
 
-                    # Wait a short amount of time (in seconds), adjust as needed
-                    time.sleep(2)
+                    # # Wait a short amount of time (in seconds), adjust as needed
+                    # time.sleep(2)
 
-                    # Stop music if still playing
-                    pygame.mixer.music.stop()
+                    # # Stop music if still playing
+                    # pygame.mixer.music.stop()
                     break
                 else: 
                     print(f"Not enough confidence: {gemini_confidence}")
