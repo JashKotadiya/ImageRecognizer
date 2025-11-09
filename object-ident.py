@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 gemini_response = response.text #Saves the response
                 print(gemini_response)
                 
-                print("Working patt 1")
+                print("Working part 1")
                 gemini_confidence = model.generate_content([
                     f"Imagine you are hired to compare two descriptions of objects and determine how close the descriptions match. Here is the first description: {user_description}. Here is the second description {gemini_response}. Return only the confidence level as an integer between one and one hundred"])
                 
