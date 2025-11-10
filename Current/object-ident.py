@@ -31,7 +31,7 @@ while((confidence < 85 or dist < 0.2) and turns != 0):
     pil_img = Image.open(img_path)
 
     response = model.generate_content([
-        f"Imagine you are hired to find an object. You have been given a description of the object, and a random image. If the object is found in the image, return your response as two number ONLY!. Your response should look like this and distance is in meters, example: 45,1. NOthing else should be returned, jsut these.  If the object is not found, use confidence 0 and distance -1. Here is the description: {user_description}, and here is the image", pil_img 
+        f"Imagine you are hired to find an object. You have been given a description of the object, and a random image. If the object is found in the image and the object is ON THE GROUND like same level as the camera, return your response as two number ONLY!. Your response should look like this and distance is in meters, example: 45,1. NOthing else should be returned, jsut these.  If the object is not found, use confidence 0 and distance -1. Here is the description: {user_description}, and here is the image", pil_img 
     ])
 
     print(response.text)
