@@ -1,4 +1,4 @@
-﻿# Object-Recognizing-Robot- aka ARGUS
+﻿# Object-Recognizing-Robot - aka ARGUS
 Inspiration
 We wanted to create a system that bridges human language and robotic perception — something that can understand what you’re looking for and help you find it. From losing keys at home to searching for tools in a workspace, the idea of a robot that can visually locate objects based on a natural-language description felt both futuristic and genuinely useful. That’s how ARGUS was born — an intelligent vision assistant powered by AI.
 
